@@ -14,6 +14,7 @@ FROM golang:1.11 AS build-golang
 
 WORKDIR /go/src/github.com/privatesam/gophish
 COPY . .
+ENV GO111MODULE=on
 RUN go get -v && go build -v
 
 
