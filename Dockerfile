@@ -32,15 +32,15 @@ WORKDIR /opt/gophish
 COPY --from=build-golang /go/src/github.com/privatesam/gophish/ ./
 COPY --from=build-js /build/static/js/dist/ ./static/js/dist/
 COPY --from=build-js /build/static/css/dist/ ./static/css/dist/
-COPY --from=build-golang /go/src/github.com/privatesam/gophish/config.json config/
-RUN chown app. config/config.json
+COPY --from=build-golang /go/src/github.com/privatesam/gophish/config.json ./
+RUN chown app. config.json
 
 RUN setcap 'cap_net_bind_service=+ep' /opt/gophish/gophish
 
 USER app
-# RUN sed -i 's/127.0.0.1/0.0.0.0/g' config/config.json
+RUN sed -i 's/127.0.0.1/0.0.0.0/g' config.json
 RUN touch config.json.tmp
 
-EXPOSE 3333 8080 8443
+EXPOSE 3333 8080 8443 80
 
 CMD ["./docker/run.sh"]
