@@ -1,9 +1,11 @@
 ![gophish logo](https://raw.github.com/gophish/gophish/master/static/images/gophish_purple.png)
 
-Gophish _ privatesam
+Gophish - privatesam
 =======
 
 ![Build Status](https://github.com/gophish/gophish/workflows/CI/badge.svg) [![GoDoc](https://godoc.org/github.com/gophish/gophish?status.svg)](https://godoc.org/github.com/gophish/gophish)
+
+This is a very slightly modified version of the official gophish docker build.  I've changed the location of the config.json file such that it can be stored on a binded volume mount from the host.  This is useful in different environments such as Azure.
 
 Gophish: Open-Source Phishing Toolkit
 
